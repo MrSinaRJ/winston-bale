@@ -1,7 +1,7 @@
 {
   "name": "winston-bale",
   "description": "A Bale messenger transport for winston",
-  "version": "2.7.0",
+  "version": "1.0.0",
   "author": "Amir Moeen Rahmani",
   "repository": {
     "type": "git",
