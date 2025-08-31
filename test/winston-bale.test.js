@@ -2,14 +2,14 @@ const should = require('chai').should()
 const expect = require('chai').expect
 const assert = require('chai').assert
 const sinon = require('sinon')
-const Transport = require('../lib/winston-telegram')
+const Transport = require('../lib/winston-bale')
 const winston = require('winston')
 const nock = require('nock')
 
-describe('winston-telegram', function () {
+describe('winston-bale', function () {
   describe('Creating the transport', function () {
     it("Should throw an error when 'token' or 'chatId' are undefined", function (done) {
-      ;(() => new Transport()).should.throw(Error, "winston-telegram requires 'token' and 'chatId' property")
+      ;(() => new Transport()).should.throw(Error, "winston-bale requires 'token' and 'chatId' property")
       done()
     })
 
@@ -19,7 +19,7 @@ describe('winston-telegram', function () {
           token: 'foo',
           chatId: 'bar',
           formatMessage: 'foo'
-        })).should.throw(Error, "winston-telegram 'formatMessage' property should be function")
+        })).should.throw(Error, "winston-bale 'formatMessage' property should be function")
       done()
     })
 
@@ -33,7 +33,7 @@ describe('winston-telegram', function () {
       assert.ok(transport.unique === false)
       assert.ok(transport.silent === false)
       assert.ok(transport.disableNotification === false)
-      assert.ok(transport.name === 'winston-telegram')
+      assert.ok(transport.name === 'winston-bale')
       assert.ok(transport.template === '[{level}] {message}')
       assert.ok(transport.formatMessage === undefined)
       assert.ok(transport.batchingDelay === 0)
@@ -109,7 +109,7 @@ describe('winston-telegram', function () {
     })
 
     it("Should send 'error' message", function (done) {
-      nock('https://api.telegram.org')
+      nock('https://tapi.bale.ai')
         .post('/botfoo/sendMessage')
         .reply(200, { ok: true, result: {} })
       winston.add(
@@ -126,7 +126,7 @@ describe('winston-telegram', function () {
     })
 
     it("Should send 'verbose' message only", function (done) {
-      nock('https://api.telegram.org')
+      nock('https://tapi.bale.ai')
         .post('/botfoo/sendMessage')
         .reply(200, { ok: true, result: {} })
       winston.add(
@@ -145,7 +145,7 @@ describe('winston-telegram', function () {
     })
 
     it('Should suppress output', function (done) {
-      nock('https://api.telegram.org')
+      nock('https://tapi.bale.ai')
         .post('/botfoo/sendMessage')
         .optionally()
         .reply(200, { ok: true, result: {} })
@@ -163,7 +163,7 @@ describe('winston-telegram', function () {
     })
 
     it('Should send message without notification', function (done) {
-      nock('https://api.telegram.org')
+      nock('https://tapi.bale.ai')
         .post('/botfoo/sendMessage')
         .optionally()
         .reply(200, { ok: true, result: {} })
@@ -183,7 +183,7 @@ describe('winston-telegram', function () {
     })
 
     it('Should send formatted message by template', function (done) {
-      nock('https://api.telegram.org')
+      nock('https://tapi.bale.ai')
         .post('/botfoo/sendMessage')
         .reply(200, { ok: true, result: {} })
       winston.add(
@@ -205,7 +205,7 @@ describe('winston-telegram', function () {
     })
 
     it('Should send formatted message by custom function', function (done) {
-      nock('https://api.telegram.org')
+      nock('https://tapi.bale.ai')
         .post('/botfoo/sendMessage')
         .reply(200, { ok: true, result: {} })
       winston.add(
@@ -235,7 +235,7 @@ describe('winston-telegram', function () {
     })
 
     it('Should send batching of messages', function (done) {
-      nock('https://api.telegram.org')
+      nock('https://tapi.bale.ai')
         .post('/botfoo/sendMessage')
         .times(2)
         .reply(200, { ok: true, result: {} })
@@ -273,7 +273,7 @@ describe('winston-telegram', function () {
     })
 
     it('Should send splited message', function (done) {
-      nock('https://api.telegram.org')
+      nock('https://tapi.bale.ai')
         .post('/botfoo/sendMessage')
         .times(2)
         .reply(200, { ok: true, result: {} })
@@ -294,7 +294,7 @@ describe('winston-telegram', function () {
 
   describe('Emitting errors', function () {
     it('Should emit error if request returns an error', function (done) {
-      nock('https://api.telegram.org')
+      nock('https://tapi.bale.ai')
         .post('/botfoo/sendMessage')
         .replyWithError('something awful happened')
       const transport = new Transport({
@@ -318,7 +318,7 @@ describe('winston-telegram', function () {
     })
 
     it('Should emit error if request returns statusCode !== 200', function (done) {
-      nock('https://api.telegram.org')
+      nock('https://tapi.bale.ai')
         .post('/botfoo/sendMessage')
         .reply(500, { ok: false, description: 'something awful happened' })
       const transport = new Transport({
@@ -340,7 +340,7 @@ describe('winston-telegram', function () {
     })
 
     it('Should emit error if request returns statusCode !== 200 with empty body', function (done) {
-      nock('https://api.telegram.org')
+      nock('https://tapi.bale.ai')
         .post('/botfoo/sendMessage')
         .reply(500, { ok: false, description: null })
       const transport = new Transport({

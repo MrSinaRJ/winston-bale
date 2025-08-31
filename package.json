@@ -1,21 +1,21 @@
 {
-  "name": "winston-telegram",
-  "description": "A Telegram transport for winston",
-  "version": "2.7.0",
-  "author": "Ivan Marban",
+  "name": "winston-bale",
+  "description": "A Bale messenger transport for winston",
+  "version": "0.0.1",
+  "author": "Amir Moeen Rahmani",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ivanmarban/winston-telegram.git"
+    "url": "https://github.com/MrSinaRJ/winston-bale.git"
   },
   "bugs": {
-    "url": "https://github.com/ivanmarban/winston-telegram/issues"
+    "url": "https://github.com/MrSinaRJ/winston-bale/issues"
   },
   "keywords": [
     "logging",
     "sysadmin",
     "tools",
     "winston",
-    "telegram",
+    "bale",
     "bot"
   ],
   "dependencies": {
@@ -24,11 +24,11 @@
   "peerDependencies": {
     "winston": "^3.0.0"
   },
-  "main": "lib/winston-telegram",
+  "main": "lib/winston-bale",
   "engines": {
     "node": ">= 14.0.0"
   },
-  "types": "lib/winston-telegram",
+  "types": "lib/winston-bale",
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.3.10",

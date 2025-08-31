@@ -3,11 +3,11 @@
  */
 
 const logger = require('winston')
-const TelegramLogger = require('../lib/winston-telegram')
+const BaleLogger = require('../lib/winston-bale')
 
 logger.add(
-  new TelegramLogger({
-    token: 'TELEGRAM_TOKEN',
+  new BaleLogger({
+    token: 'BALE_TOKEN',
     chatId: 'CHAT_ID',
     level: 'error',
     unique: true,

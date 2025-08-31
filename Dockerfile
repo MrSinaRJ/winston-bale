@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . .
 RUN npm install && \
   echo $'#!/bin/sh\n\
-  sed -i "s/TELEGRAM_TOKEN/$TELEGRAM_TOKEN/g" /app/examples/*\n\
+  sed -i "s/BALE_TOKEN/$BALE_TOKEN/g" /app/examples/*\n\
   sed -i "s/CHAT_ID_1/$CHAT_ID/g" /app/examples/*\n\
   sed -i "s/CHAT_ID_2/$CHAT_ID/g" /app/examples/*\n\
   sed -i "s/CHAT_ID/$CHAT_ID/g" /app/examples/*\n\

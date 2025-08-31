@@ -1,18 +1,18 @@
-import TransportStream = require("winston-transport")
+import TransportStream = require('winston-transport')
 
-declare class WinstonTelegram extends TransportStream {
-  constructor(options: WinstonTelegram.Options)
+declare class WinstonBale extends TransportStream {
+  constructor(options: WinstonBale.Options)
 }
 
-declare namespace WinstonTelegram {
+declare namespace WinstonBale {
   export interface Options {
-    /** The Telegram bot authentication token. */
+    /** The Bale messenger bot authentication token. */
     token: string
-    /** The Telegram chatid you want to send to. */
+    /** The Bale messenger chatid you want to send to. */
     chatId: number
-    /** The Telegram identifier of a message thread to which the message belongs. */
+    /** The Bale messenger identifier of a message thread to which the message belongs. */
     messageThreadId?: number
-    /** The Telegram mode for parsing entities in the message text. */
+    /** The Bale messenger mode for parsing entities in the message text. */
     parseMode?: string
     /** Level of messages that this transport should log. (default "info") */
     level?: string
@@ -22,12 +22,12 @@ declare namespace WinstonTelegram {
     silent?: boolean
     /** Sends the message silently. (default false) */
     disableNotification?: boolean
-    /** ? (default "winston-telegram") */
+    /** ? (default "winston-bale") */
     name?: string
     /** Format output message. (default "[{level}] [message]") */
     template?: string
     /** Format output message by own method. */
-    formatMessage?: (params: WinstonTelegram.FormatOptions, info: any) => string
+    formatMessage?: (params: WinstonBale.FormatOptions, info: any) => string
     /** Handle uncaught exceptions. (default true) */
     handleExceptions?: boolean
     /** Time in ms within which to batch messages together. (default = 0) (0 = disabled) */
@@ -35,13 +35,12 @@ declare namespace WinstonTelegram {
     /** String with which to join batched messages with (default "\n\n") */
     batchingSeparator?: string
   }
-  
+
   export interface FormatOptions {
-    level: string,
-    message: string,
+    level: string
+    message: string
     metadata: any
   }
-
 }
 
-export = WinstonTelegram
+export = WinstonBale

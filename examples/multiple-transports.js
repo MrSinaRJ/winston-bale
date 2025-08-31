@@ -3,20 +3,20 @@
  */
 
 const winston = require('winston')
-const TelegramLogger = require('../lib/winston-telegram')
+const BaleLogger = require('../lib/winston-bale')
 
 const logger = winston.createLogger({
   transports: [
-    new TelegramLogger({
+    new BaleLogger({
       name: 'error-channel',
-      token: 'TELEGRAM_TOKEN',
+      token: 'BALE_TOKEN',
       chatId: 'CHAT_ID',
       level: 'error',
       unique: true
     }),
-    new TelegramLogger({
+    new BaleLogger({
       name: 'info-channel',
-      token: 'TELEGRAM_TOKEN',
+      token: 'BALE_TOKEN',
       chatId: 'CHAT_ID',
       level: 'info',
       unique: true,

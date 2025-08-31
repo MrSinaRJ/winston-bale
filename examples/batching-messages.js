@@ -3,11 +3,11 @@
  */
 
 const logger = require('winston')
-const TelegramLogger = require('../lib/winston-telegram')
+const BaleLogger = require('../lib/winston-bale')
 
 logger.add(
-  new TelegramLogger({
-    token: 'TELEGRAM_TOKEN',
+  new BaleLogger({
+    token: 'BALE_TOKEN',
     chatId: 'CHAT_ID',
     level: 'info',
     batchingDelay: 1000
@@ -31,7 +31,7 @@ setTimeout(function () {
 }, 1500)
 
 /*
- * Output on Telegram:
+ * Output on Bale:
  * Sent at 5:22:49PM:
  *   [info] First message: Tue May 30 2017 17:22:47 GMT+0800 (+08)
  *
