@@ -1,7 +1,7 @@
 {
   "name": "winston-bale",
   "description": "A Bale messenger transport for winston",
-  "version": "0.0.1",
+  "version": "2.7.0",
   "author": "Amir Moeen Rahmani",
   "repository": {
     "type": "git",
@@ -29,6 +29,13 @@
     "node": ">= 14.0.0"
   },
   "types": "lib/winston-bale",
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE",
+    "examples"
+  ],
+  "homepage": "https://github.com/MrSinaRJ/winston-bale#readme",
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.3.10",
