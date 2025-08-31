@@ -16,6 +16,10 @@ A [Bale][0] transport for [winston][1].
 This is an attempt to change Winston Telegram to Winston Bale to support Bale messenger. There is no guarantee that this will work
 
 
+## Attribution
+Fork of [winston-telegram](https://github.com/ivanmarban/winston-telegram) (MIT). See LICENSE for details.
+Keep the existing MIT LICENSE file.
+
 Installation:
 ``` sh
 $ npm install winston@3
